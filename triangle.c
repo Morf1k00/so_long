@@ -5,12 +5,13 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/04 19:02:56 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/04/04 19:20:55 by rkrechun         ###   ########.fr       */
+/*   Created: 2024/04/04 18:52:40 by rkrechun          #+#    #+#             */
+/*   Updated: 2024/04/04 18:57:53 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
+
 typedef struct s_data{
 	void	*img;
 	char	*addr;
@@ -23,34 +24,23 @@ int main(void)
 {
 	void	*mlx;
 	void	*mlx_win;
-	int		x = 60;
-	int		y = 60;
+
+	int		x = 10;
+	int		y = 10;
 
 	mlx = mlx_init();
-	mlx_win = mlx_new_window(mlx, 1280, 960, "Morfik");
-	while(x <= 120 && y <= 120)
+	mlx_win = mlx_new_window(mlx, 1920, 1080, "Morfik");
+	while(x <= 110)
 	{
-		mlx_pixel_put(mlx, mlx_win, x, y, 0x00FF0000);
+		mlx_pixel_put(mlx, mlx_win, x, y,  0x00FF0000);
 		x++;
+	}
+	while(y <= 110)
+	{
+		mlx_pixel_put(mlx, mlx_win, x, y,  0x00FF0000);
 		y++;
 	}
-	while(x <= 180 && y >= 60)
-	{
-		mlx_pixel_put(mlx, mlx_win, x, y, 0x00FF0000);
-		x++;
-		y--;
-	}
-	while (x >= 120 && y >= 0)
-	{
-		mlx_pixel_put(mlx, mlx_win, x, y, 0x00FF0000);
-		x--;
-		y--;
-	}
-	while(x>= 60 && y <= 60)
-	{
-		mlx_pixel_put(mlx, mlx_win, x, y, 0x00FF0000);
-		x--;
-		y++;
-	}
+	while (y-- >= 11 && x-- >= 11)
+		mlx_pixel_put(mlx, mlx_win, x, y,  0x00FF0000);
 	mlx_loop(mlx);
 }
