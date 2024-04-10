@@ -11,13 +11,7 @@
 /* ************************************************************************** */
 
 #include "so_long.h"
-
-typedef struct s_data{
-	void	*mlx;
-	void	*mlx_win;
-	void	*img;
-	
-}			t_data;
+#include "string.h"
 
 int key_cross(t_data *data)// close windows when i press red cross 
 {
@@ -27,19 +21,33 @@ int key_cross(t_data *data)// close windows when i press red cross
 
 int	key_hook(int keycode, t_data *data)
 {
+	//printf("Hi , the key code of this bitton is : %d\n", keycode);
 	if (keycode == 53)// exit when press ESC
 	{
-		//printf("Hi , the key code of this bitton is : %d\n", keycode);
 		mlx_destroy_window(data->mlx, data->mlx_win);
 		exit(0);
 	}
-	if (keycode == 2)
-	{
-		mlx_put_image_to_window(data->mlx, data->mlx_win, &data->img, 64, 64);
-
-	}
 	return (0);
 }
+
+int main()
+{
+	t_data	game;
+	int h = 0;
+	int w = 0;
+	
+	memset(&game, 0, sizeof(t_data));
+	game.mlx = mlx_init();
+	game.mlx_win = mlx_new_window(game.mlx, 1280, 960, "so_long");
+	game.wall = mlx_xpm_file_to_image(game.mlx, "textures/pixil-frame-0.xpm", &w, &h);
+	if (game.wall)
+		mlx_put_image_to_window(game.mlx, game.mlx_win, game.wall, 0, 0);
+
+	mlx_key_hook(game.mlx_win, key_hook, &game);// reading keys
+	mlx_hook(game.mlx_win, 17, 0, key_cross, &game);// waiting when someone press cross
+	mlx_loop(game.mlx);
+}
+
 // w is keycode 13
 // s is keycode 1
 // a is keycode 0
@@ -53,24 +61,3 @@ int	key_hook(int keycode, t_data *data)
 // 	ON_EXPOSE = 12,
 // 	ON_DESTROY = 17
 // };
-int main(void)
-{
-	t_data	data;
-	data.img = calloc();
-
-	
-	data.mlx = mlx_init();
-	data.mlx_win = mlx_new_window(data.mlx, 1280, 960, "Morfik");
-
-	int w = 64;
-	int h = 64;
-	char	*relative_path = "../textures/pixil-frame-0.xpm";
-
-	data.img = mlx_xpm_file_to_image(data.mlx, relative_path, &w, &h);
-
-	mlx_xpm_file_to_image(data.mlx, relative_path, &w, &h);
-
-	mlx_key_hook(data.mlx_win, key_hook, &data);// reading keys
-	mlx_hook(data.mlx_win, 17, 1L<<0, key_cross, &data);// waiting when someone press 
-	mlx_loop(data.mlx);
-}
