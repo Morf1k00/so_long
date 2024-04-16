@@ -11,40 +11,42 @@
 /* ************************************************************************** */
 
 #include "so_long.h"
-#include "string.h"
+// #include "string.h"
 
-int key_cross(t_data *data)// close windows when i press red cross 
+static void	*ft_memset(void *b, int c, size_t len)
 {
-	mlx_destroy_window(data->mlx, data->mlx_win);
-	exit(0);
-}
+	size_t			i;
+	unsigned char	*str;
 
-int	key_hook(int keycode, t_data *data)
-{
-	//printf("Hi , the key code of this bitton is : %d\n", keycode);
-	if (keycode == 53)// exit when press ESC
+	i = 0;
+	str = (unsigned char *)b;
+	while (i < len)
 	{
-		mlx_destroy_window(data->mlx, data->mlx_win);
-		exit(0);
+		str[i] = (unsigned char)c;
+		i++;
 	}
-	return (0);
+	return (b);
 }
 
-int main()
+int main(int argc, char **argv)
 {
 	t_data	game;
 	int h = 0;
 	int w = 0;
 	
-	memset(&game, 0, sizeof(t_data));
+	if(argc != 2)
+		return(0);
+	ft_memset(&game, 0, sizeof(t_data));
+	map_read(&game, argv);
 	game.mlx = mlx_init();
 	game.mlx_win = mlx_new_window(game.mlx, 1280, 960, "so_long");
 	game.wall = mlx_xpm_file_to_image(game.mlx, "textures/pixil-frame-0.xpm", &w, &h);
+
 	if (game.wall)
 		mlx_put_image_to_window(game.mlx, game.mlx_win, game.wall, 0, 0);
 
-	mlx_key_hook(game.mlx_win, key_hook, &game);// reading keys
-	mlx_hook(game.mlx_win, 17, 0, key_cross, &game);// waiting when someone press cross
+	// mlx_key_hook(game.mlx_win, key_hook, &game);// reading keys
+	// mlx_hook(game.mlx_win, 17, 0, key_cross, &game);// waiting when someone press cross
 	mlx_loop(game.mlx);
 }
 

@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 17:27:49 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/04/09 17:27:51 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/04/16 14:39:03 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,17 @@ int key_cross(t_data *data)// close windows when i press red cross
 	mlx_destroy_window(data->mlx, data->mlx_win);
 	exit(0);
 }
+
+// int	key_hook(int keycode, t_data *data)
+// {
+// 	//printf("Hi , the key code of this bitton is : %d\n", keycode);
+// 	if (keycode == 53)// exit when press ESC
+// 	{
+// 		mlx_destroy_window(data->mlx, data->mlx_win);
+// 		exit(0);
+// 	}
+// 	return (0);
+// }
 
 int	key_hook(int keycode, t_data *data)
 {

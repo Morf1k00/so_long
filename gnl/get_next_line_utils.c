@@ -6,66 +6,98 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 13:25:52 by ipetruni          #+#    #+#             */
-/*   Updated: 2024/04/10 17:57:12 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/04/11 15:32:42 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
 
-size_t	ft_strlen(char *s)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
 	size_t	i;
+	size_t	j;
+	char	*str;
+
+	str = (char *)malloc(sizeof(*s) * (len + 1));
+	if (str == 0)
+		return (NULL);
+	i = 0;
+	j = 0;
+	while (s[i])
+	{
+		if (i >= start && j < len)
+		{
+			str[j] = s[i];
+			j++;
+		}
+		i++;
+	}
+	str[j] = 0;
+	return (str);
+}
+
+int	ft_strlen(const char *str)
+{
+	int	i;
 
 	i = 0;
-	while (s && s[i] && s[i] != '\n')
+	while (str[i])
 		i++;
 	return (i);
 }
 
-int	ft_clean(char *str)
+char	*ft_strchr(const char *s, int i)
 {
-	int	i;
-	int	j;
-	int	is_nl;
-
-	i = 0;
-	j = 0;
-	is_nl = 0;
-	while (str[i])
+	while (*s)
 	{
-		if (is_nl)
-			str[j++] = str[i];
-		if (str[i] == '\n')
-			is_nl = 1;
-		str[i++] = '\0';
+		if (*s == i)
+			return ((char *)s);
+		s++;
 	}
-	return (is_nl);
+	if (i == '\0')
+		return ((char *)s);
+	return (0);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strdup(const char *s)
 {
-	char	*s3;
 	int		i;
 	int		j;
+	char	*str;
 
-	if (s2[0] == '\0')
-		return (0);
-	s3 = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
-	if (!s3)
-		return (NULL);
 	i = 0;
-	while (s1 && s1[i])
+	j = ft_strlen(s);
+	str = (char *)malloc(sizeof(*str) * (j + 1));
+	while (i < j)
 	{
-		s3[i] = s1[i];
+		str[i] = s[i];
 		i++;
 	}
+	str[i] = '\0';
+	return (str);
+}
+
+char	*ft_strjoin(char const *s1, char const *s2)
+{
+	int		i;
+	int		j;
+	char	*str;
+
+	i = 0;
 	j = 0;
-	while (s2 && s2[j] && s2[j] != '\n')
-		s3[i++] = s2[j++];
-	if (s2[j] == '\n')
-		s3[i++] = '\n';
-	s3[i] = '\0';
-	if (s1)
-		free(s1);
-	return (s3);
+	str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	if (str == NULL)
+		return (NULL);
+	while (s1[i] != '\0')
+	{
+		str[i] = s1[i];
+		i++;
+	}
+	while (s2[j] != '\0')
+	{
+		str[i + j] = s2[j];
+		j++;
+	}
+	str[i + j] = '\0';
+	return (str);
 }
