@@ -6,11 +6,11 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 16:57:07 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/04/16 14:52:29 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/04/16 15:20:19 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 
 static void count(int fd, t_data *game)
 {

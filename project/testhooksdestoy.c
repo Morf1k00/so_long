@@ -6,15 +6,11 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 17:27:49 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/04/16 14:39:03 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/04/16 16:54:23 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-typedef struct s_data{
-	void	*mlx;
-	void	*mlx_win;
-	
-}			t_data;
+#include "../include/so_long.h"
 
 int key_cross(t_data *data)// close windows when i press red cross 
 {
@@ -22,55 +18,55 @@ int key_cross(t_data *data)// close windows when i press red cross
 	exit(0);
 }
 
-// int	key_hook(int keycode, t_data *data)
-// {
-// 	//printf("Hi , the key code of this bitton is : %d\n", keycode);
-// 	if (keycode == 53)// exit when press ESC
-// 	{
-// 		mlx_destroy_window(data->mlx, data->mlx_win);
-// 		exit(0);
-// 	}
-// 	return (0);
-// }
-
 int	key_hook(int keycode, t_data *data)
 {
-	int		x = 10;
-	int		y = 10;
-	if (keycode == 53){// exit when press ESC
-		//printf("Hi , the key code of this bitton is : %d\n", keycode);
+	//printf("Hi , the key code of this bitton is : %d\n", keycode);
+	if (keycode == 53)// exit when press ESC
+	{
 		mlx_destroy_window(data->mlx, data->mlx_win);
 		exit(0);
 	}
-	if (keycode == 13)// print top line on square
-	{
-		while (x <= 110)
-		{	mlx_pixel_put(data->mlx, data->mlx_win, x, y, 0x00FF0000);
-			x++;}
-	}
-	if (keycode == 0) // print left line on  square
-	{	while (y <= 110)
-		{	mlx_pixel_put(data->mlx, data->mlx_win, x, y, 0x00FF0000);
-			y++;}
-	}
-	if (keycode == 1) // print bootom line on square
-	{
-		x = 110;
-		y = 110;
-		while(x >= 11)
-		{mlx_pixel_put(data->mlx, data->mlx_win, x, y, 0x00FF0000);
-		x--;}
-	}
-	if (keycode == 2) // print right line on square
-	{
-		y = 110;
-		x = 110;
-		while(y >= 11)
-		{	mlx_pixel_put(data->mlx, data->mlx_win, x, y, 0x00FF0000);
-		y--;}
-	}
 	return (0);
 }
+
+// int	key_hook(int keycode, t_data *data)
+// {
+// 	int		x = 10;
+// 	int		y = 10;
+// 	if (keycode == 53){// exit when press ESC
+// 		//printf("Hi , the key code of this bitton is : %d\n", keycode);
+// 		mlx_destroy_window(data->mlx, data->mlx_win);
+// 		exit(0);
+// 	}
+// 	if (keycode == 13)// print top line on square
+// 	{
+// 		while (x <= 110)
+// 		{	mlx_pixel_put(data->mlx, data->mlx_win, x, y, 0x00FF0000);
+// 			x++;}
+// 	}
+// 	if (keycode == 0) // print left line on  square
+// 	{	while (y <= 110)
+// 		{	mlx_pixel_put(data->mlx, data->mlx_win, x, y, 0x00FF0000);
+// 			y++;}
+// 	}
+// 	if (keycode == 1) // print bootom line on square
+// 	{
+// 		x = 110;
+// 		y = 110;
+// 		while(x >= 11)
+// 		{mlx_pixel_put(data->mlx, data->mlx_win, x, y, 0x00FF0000);
+// 		x--;}
+// 	}
+// 	if (keycode == 2) // print right line on square
+// 	{
+// 		y = 110;
+// 		x = 110;
+// 		while(y >= 11)
+// 		{	mlx_pixel_put(data->mlx, data->mlx_win, x, y, 0x00FF0000);
+// 		y--;}
+// 	}
+// 	return (0);
+// }
 // w is keycode 13
 // s is keycode 1
 // a is keycode 0

@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../include/so_long.h"
 // #include "string.h"
 
 static void	*ft_memset(void *b, int c, size_t len)
@@ -31,19 +31,20 @@ static void	*ft_memset(void *b, int c, size_t len)
 int main(int argc, char **argv)
 {
 	t_data	game;
-	int h = 0;
-	int w = 0;
+	// int h = 0;
+	// int w = 0;
 	
 	if(argc != 2)
 		return(0);
 	ft_memset(&game, 0, sizeof(t_data));
 	map_read(&game, argv);
 	game.mlx = mlx_init();
-	game.mlx_win = mlx_new_window(game.mlx, 1280, 960, "so_long");
-	game.wall = mlx_xpm_file_to_image(game.mlx, "textures/pixil-frame-0.xpm", &w, &h);
-
-	if (game.wall)
-		mlx_put_image_to_window(game.mlx, game.mlx_win, game.wall, 0, 0);
+	game.mlx_win = mlx_new_window(game.mlx, game.width * 64, game.height * 64, "so_long");
+	image_in_window(&game);
+	graphics_map(&game);
+//	game.wall = mlx_xpm_file_to_image(game.mlx, "textures/pixil-frame-0.xpm", &w, &h);
+	//if (game.wall)
+	//	mlx_put_image_to_window(game.mlx, game.mlx_win, game.wall, 0, 0);
 
 	// mlx_key_hook(game.mlx_win, key_hook, &game);// reading keys
 	// mlx_hook(game.mlx_win, 17, 0, key_cross, &game);// waiting when someone press cross

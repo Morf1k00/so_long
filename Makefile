@@ -5,42 +5,30 @@
 #                                                     +:+ +:+         +:+      #
 #    By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2024/04/03 15:46:09 by rkrechun          #+#    #+#              #
-#    Updated: 2024/04/16 14:51:20 by rkrechun         ###   ########.fr        #
+#    Created: 2024/04/16 15:22:19 by rkrechun          #+#    #+#              #
+#    Updated: 2024/04/16 15:23:32 by rkrechun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME	= so_long
+NAME := so_long
 
+CC := gcc
 
+CFLAGS := -Wall -Wextra -Werror -Iheaders/
 
-GAME		= so_long.c
-GAMEPATH	= $(GAME)
-OBJ			= $(GAMEPATH:.c=.o)
+SOURCE := project/*.c
+GETNEXTLINE := gnl/*c
+LIBRARY := -Lminilibx -lmlx -framework OpenGL -framework AppKit
+MINILIBX := mlx/
 
-FUNC_SRCS	= maps.c
-# FUNC_DIR	
-FUNC		= $(addprefix $(FUNC_SRCS))
-OBJ_D		= $(OBJ_D:.c=.o)
-
-GNL_SRCS	= gnl/get_next_line.c gnl/get_next_line_utils.c
-GNL			= $(addprefix $(GNL_SRCS))
-GNL_F		= $(GNL_F:.c=.o)
- 
-%.o: %.c
-	$(CC) -Wall -Wextra -Werror -Imlx -c $< -o $@
-
- $(NAME): $(OBJ) 
-	$(CC) $(OBJ) $(OBJ_D) $(GNL_F) -fsanitize=address -fno-omit-frame-pointer -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
-
-all: $(NAME)
+all:
+	make -C $(MINILIBX)
+	$(CC) $(CFLAGS) $(SOURCE) $(GETNEXTLINE) $(LIBRARY) -o $(NAME)
 
 clean:
-		@$(RM) $(OBJ)
 
-fclean:
-		@$(RM) $(NAME)
-		@$(RM) $(OBJ)
-		@$(RM) $(OBJ_F)
+fclean: clean
+		make clean -C $(MINILIBX)
+		rm -rf $(NAME)
 
-.PHONY: all clean fclean
+re: fclean all
