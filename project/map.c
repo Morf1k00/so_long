@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 16:57:07 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/04/16 15:20:19 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/04/17 14:11:38 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ static void count(int fd, t_data *game)
 		line = get_next_line(fd);
 		l++;
 	}
-	game->width = s;
-	game->height = l;
+	game->width = s - 1;
+	game->height = l - 1;
 }
 
 static void alocc_map(t_data *game, int fd)
@@ -42,48 +42,24 @@ static void alocc_map(t_data *game, int fd)
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
-		game->map[i] = line;
+		game->map[i] = ft_strdup(line);
 		free(line);
 		line = get_next_line(fd);
 		i++;
 	}
 }
 
-int map_read(t_data *game, char **argv)
+void map_read(t_data *game, char **argv)
 {
 	int fd;
 	int i;
  
 	fd = open(argv[1], O_RDONLY);
 	i = 0;
-	//game = ft_calloc(sizeof(t_data), 1);
 	count(fd, game);
-	game->map = (char **)malloc(sizeof(char *) * game->height + 1);
-	while (i <= game->height)
-	{
-		game->map[i] = malloc((game->width + 1) * sizeof(char));
-		i++;
-	}
-	alocc_map(game, fd);
-	// return_map(game);
 	close(fd);
-	return(0);
+	fd = open(argv[1], O_RDONLY);
+	game->map = malloc(sizeof(char *) * (size_t)(game->height + 1));
+	alocc_map(game, fd);
+	close(fd);
 }
-// static void return_map(t_data *game)
-// {
-// 	int i;
-// 	int j;
-// 	i = 0;
-
-// 	while (game->map[i])
-// 	{
-// 		j = 0;
-// 		while(game->map[i][j] != '\0')
-// 		{
-// 			printf("%s", game->map[i]);
-// 			j++;
-// 		printf("\n");
-// 		}
-// 		i++;
-// 	}
-// }

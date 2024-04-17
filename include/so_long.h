@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 16:00:56 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/04/16 16:54:41 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/04/17 11:26:44 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,13 @@ typedef struct s_data{
 	int		countscore;
 	int		steps;
 
+	int		img_h;
+	int		img_w;
 	
 }			t_data;
 
-void	*ft_calloc(size_t count, size_t size);
-int 	map_read(t_data *game, char **argv);
+//-void	*ft_calloc(size_t count, size_t size);
+void 	map_read(t_data *game, char **argv);
 void	image_in_window(t_data *game);
 void	graphics_map(t_data *game);
 int		key_cross(t_data *data);

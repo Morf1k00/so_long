@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 17:27:49 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/04/16 16:54:23 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/04/16 17:56:20 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,14 +80,14 @@ int	key_hook(int keycode, t_data *data)
 // 	ON_EXPOSE = 12,
 // 	ON_DESTROY = 17
 // };
-int main(void)
-{
-	t_data	data;
+// int main(void)
+// {
+// 	t_data	data;
 	
-	data.mlx = mlx_init();
-	data.mlx_win = mlx_new_window(data.mlx, 1280, 960, "Morfik");
+// 	data.mlx = mlx_init();
+// 	data.mlx_win = mlx_new_window(data.mlx, 1280, 960, "Morfik");
 	
-	mlx_key_hook(data.mlx_win, key_hook, &data);// reading keys
-	mlx_hook(data.mlx_win, 17, 1L<<0, key_cross, &data);// waiting when someone press red cross
-	mlx_loop(data.mlx);
-}
+// 	mlx_key_hook(data.mlx_win, key_hook, &data);// reading keys
+// 	mlx_hook(data.mlx_win, 17, 1L<<0, key_cross, &data);// waiting when someone press red cross
+// 	mlx_loop(data.mlx);
+// }

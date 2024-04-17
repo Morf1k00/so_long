@@ -6,11 +6,12 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/29 13:26:12 by ipetruni          #+#    #+#             */
-/*   Updated: 2024/04/11 15:32:27 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/04/17 14:01:22 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include "stdio.h"
 
 static char	*function_name(int fd, char *buf, char *backup)
 {
@@ -74,6 +75,6 @@ char	*get_next_line(int fd)
 	buf = NULL;
 	if (!line)
 		return (NULL);
-	backup = extract(line);
+	backup = extract(line); 
 	return (line);
 }

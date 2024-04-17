@@ -6,29 +6,54 @@
 #    By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/16 15:22:19 by rkrechun          #+#    #+#              #
-#    Updated: 2024/04/16 15:23:32 by rkrechun         ###   ########.fr        #
+#    Updated: 2024/04/17 12:08:23 by rkrechun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME := so_long
+NAME = so_long
+CC		= gcc -g -fsanitize=address
+FLAGS	= -Wall -Wextra -Werror -Imlx  #-framework OpenGL -framework AppKit
+RM		= rm -rf
 
-CC := gcc
+HEADER_SRCS	= so_long.h
+HEADER_DIR	= include/
+HEADER		= $(addprefix $(HEADER_DIR), $(HEADER_SRCS))
 
-CFLAGS := -Wall -Wextra -Werror -Iheaders/
+MPATH_SRCS	= map.c maps_render.c so_long.c testhooksdestoy.c
+MPATH_DIR	= project/
+MPATH		= $(addprefix $(MPATH_DIR), $(MPATH_SRCS))
+OBJ_M		= $(MPATH:.c=.o)
 
-SOURCE := project/*.c
-GETNEXTLINE := gnl/*c
-LIBRARY := -Lminilibx -lmlx -framework OpenGL -framework AppKit
-MINILIBX := mlx/
+FUNC_SRCS	= get_next_line.c get_next_line_utils.c 
+FUNC_DIR	= gnl/
+FUNC		= $(addprefix $(FUNC_DIR), $(FUNC_SRCS))
+OBJ_F		= $(FUNC:.c=.o)
 
-all:
-	make -C $(MINILIBX)
-	$(CC) $(CFLAGS) $(SOURCE) $(GETNEXTLINE) $(LIBRARY) -o $(NAME)
 
-clean:
+#LIBRARY = -Lmlx -lmlx -framework OpenGL -framework AppKit
+#MINILIBX = mlx/
 
-fclean: clean
-		make clean -C $(MINILIBX)
-		rm -rf $(NAME)
+%.o: %.c $(HEADER) Makefile
+	@$(CC) $(FLAGS) -c $< -o $@
 
-re: fclean all
+$(NAME): $(OBJ_F) $(OBJ_M)
+	@$(CC) $(OBJ_F) $(OBJ_M) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
+
+all: $(NAME)
+
+clean:	
+		@$(RM) $(OBJ_M)
+		@$(RM) $(OBJ_F)
+		@echo "$(YELLOW)Objectfile deleted!$(DEFAULT)"
+
+fclean: 
+		@$(RM) $(OBJ_M)
+		@$(RM) $(OBJ_F)
+		@$(RM) $(NAME)
+		@echo "$(RED)All deleted!$(DEFAULT)"
+
+re:	fclean all
+
+.PHONY: all clean fclean re
+
+# -lmlx -framework OpenGL -framework AppKit
