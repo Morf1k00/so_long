@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
-// #include "string.h"
 
 static void	*ft_memset(void *b, int c, size_t len)
 {

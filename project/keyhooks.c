@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   testhooksdestoy.c                                  :+:      :+:    :+:   */
+/*   keyhooks.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 17:27:49 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/04/16 17:56:20 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/04/18 18:03:18 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,59 +14,38 @@
 
 int key_cross(t_data *data)// close windows when i press red cross 
 {
+	int i;
+
+	i = 0;
 	mlx_destroy_window(data->mlx, data->mlx_win);
+	while(i <= data->height)
+		free(data->map[i++]);
+	free(data->mlx);
 	exit(0);
 }
 
-int	key_hook(int keycode, t_data *data)
+int	key_hook(int keycode, t_data *game)
 {
-	//printf("Hi , the key code of this bitton is : %d\n", keycode);
+	int	move;
+
 	if (keycode == 53)// exit when press ESC
 	{
-		mlx_destroy_window(data->mlx, data->mlx_win);
+		mlx_destroy_window(game->mlx, game->mlx_win);
+		ft_printf("\n CLOSE GAME \n\n");
 		exit(0);
 	}
-	return (0);
+	if (keycode == 13) // go top 
+		move = keyboard_horisontal(game, keycode);
+	if (keycode == 1) // go bootom
+		move = keyboard_horisontal(game, keycode);
+	if (keycode == 0) // go left
+		move = keyboard_vertical(game, keycode);
+	if (keycode == 2) // go right
+		move = keyboard_vertical(game, keycode);
+	graphics_map(game);
+	return (1);
 }
 
-// int	key_hook(int keycode, t_data *data)
-// {
-// 	int		x = 10;
-// 	int		y = 10;
-// 	if (keycode == 53){// exit when press ESC
-// 		//printf("Hi , the key code of this bitton is : %d\n", keycode);
-// 		mlx_destroy_window(data->mlx, data->mlx_win);
-// 		exit(0);
-// 	}
-// 	if (keycode == 13)// print top line on square
-// 	{
-// 		while (x <= 110)
-// 		{	mlx_pixel_put(data->mlx, data->mlx_win, x, y, 0x00FF0000);
-// 			x++;}
-// 	}
-// 	if (keycode == 0) // print left line on  square
-// 	{	while (y <= 110)
-// 		{	mlx_pixel_put(data->mlx, data->mlx_win, x, y, 0x00FF0000);
-// 			y++;}
-// 	}
-// 	if (keycode == 1) // print bootom line on square
-// 	{
-// 		x = 110;
-// 		y = 110;
-// 		while(x >= 11)
-// 		{mlx_pixel_put(data->mlx, data->mlx_win, x, y, 0x00FF0000);
-// 		x--;}
-// 	}
-// 	if (keycode == 2) // print right line on square
-// 	{
-// 		y = 110;
-// 		x = 110;
-// 		while(y >= 11)
-// 		{	mlx_pixel_put(data->mlx, data->mlx_win, x, y, 0x00FF0000);
-// 		y--;}
-// 	}
-// 	return (0);
-// }
 // w is keycode 13
 // s is keycode 1
 // a is keycode 0

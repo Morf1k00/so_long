@@ -6,11 +6,25 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 15:26:55 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/04/17 14:11:15 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/04/18 17:59:28 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+void player_position(t_data *game, int w, int h)
+{
+	mlx_put_image_to_window(game->mlx, game->mlx_win, game->player, w * 64, h * 64);
+	game->x = w;
+	game->y = h;
+}
+
+void place_coin(t_data *game, int w, int h)
+{
+	mlx_put_image_to_window(game->mlx, game->mlx_win, game->item, w * 64, h * 64);
+	game->colecteble++;
+	printf("colect: %d\n", game->colecteble);
+}
 
 void image_in_window(t_data *game)
 {
@@ -30,26 +44,25 @@ void graphics_map(t_data *game)
 	int h;
 	int w;
 
-	
-	w = 0;
 	h = 0;
+	game->colecteble = 0;
 	while(h <= game->height)
 	{
 		w = 0;
-		while(w <= game->width)
+		while(game->map[h][w])
 		{
 			if (game->map[h][w] == '1')
 				mlx_put_image_to_window(game->mlx, game->mlx_win, game->wall, w * 64, h * 64);
 			else if(game->map[h][w] == '0')
 				mlx_put_image_to_window(game->mlx, game->mlx_win, game->floor, w * 64, h * 64);
-			if(game->map[h][w] == 'E')
+			else if(game->map[h][w] == 'X')
 				mlx_put_image_to_window(game->mlx, game->mlx_win, game->enemy, w * 64, h * 64);
 			else if (game->map[h][w] == 'C')
-				mlx_put_image_to_window(game->mlx, game->mlx_win, game->item, w * 64, h * 64);
-			else if (game->map[h][w] == 'X')
+				place_coin(game, w, h);
+			else if (game->map[h][w] == 'E')
 				mlx_put_image_to_window(game->mlx, game->mlx_win, game->exit, w * 64, h * 64);
 			else if (game->map[h][w] == 'P')
-				mlx_put_image_to_window(game->mlx, game->mlx_win, game->player, w * 64, h * 64);
+				player_position(game, w, h);
 			w++;
 		}
 		h++;

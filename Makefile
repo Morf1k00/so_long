@@ -6,7 +6,7 @@
 #    By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/16 15:22:19 by rkrechun          #+#    #+#              #
-#    Updated: 2024/04/17 12:08:23 by rkrechun         ###   ########.fr        #
+#    Updated: 2024/04/18 17:13:17 by rkrechun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ HEADER_SRCS	= so_long.h
 HEADER_DIR	= include/
 HEADER		= $(addprefix $(HEADER_DIR), $(HEADER_SRCS))
 
-MPATH_SRCS	= map.c maps_render.c so_long.c testhooksdestoy.c
+MPATH_SRCS	= map.c maps_render.c so_long.c keyhooks.c ft_printf.c move.c
 MPATH_DIR	= project/
 MPATH		= $(addprefix $(MPATH_DIR), $(MPATH_SRCS))
 OBJ_M		= $(MPATH:.c=.o)
