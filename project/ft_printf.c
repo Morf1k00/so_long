@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/11/26 17:44:06 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/04/18 17:02:04 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/04/22 14:10:57 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,7 @@ static int	ft_format(va_list ap, char type)
 		return (ft_putstr(va_arg(ap, char *)));
 	else if (type == 'd')
 		return (ft_putnbr(va_arg(ap, int)));
-	else if(type == 'i')
+	else if (type == 'i')
 		return (ft_putnbr(va_arg(ap, int)));
 	else
 		return (0);

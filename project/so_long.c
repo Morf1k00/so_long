@@ -1,12 +1,12 @@
-// /* ************************************************************************** */
+/* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
 /*   so_long.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/09 15:58:13 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/04/09 17:03:02 by rkrechun         ###   ########.fr       */
+/*   Created: 2024/04/19 15:50:00 by rkrechun          #+#    #+#             */
+/*   Updated: 2024/04/22 14:31:35 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,20 +27,22 @@ static void	*ft_memset(void *b, int c, size_t len)
 	return (b);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
 	t_data	game;
-	
-	if(argc != 2)
-		return(0);
+
+	if (argc != 2)
+		return (0);
 	ft_memset(&game, 0, sizeof(t_data));
 	map_read(&game, argv);
+	//map_checker(&game);
 	game.mlx = mlx_init();
-	game.mlx_win = mlx_new_window(game.mlx, game.width * 64, (game.height + 1) * 64, "so_long");
+	game.mlx_win = mlx_new_window(game.mlx, game.width * 64,
+			(game.height + 1) * 64, "so_long");
 	image_in_window(&game);
 	graphics_map(&game);
-	mlx_key_hook(game.mlx_win, key_hook, &game);// reading keys
-	mlx_hook(game.mlx_win, 17, 0, key_cross, &game);// waiting when someone press cross
+	mlx_key_hook(game.mlx_win, key_hook, &game);
+	mlx_hook(game.mlx_win, 17, 0, key_cross, &game);
 	mlx_loop(game.mlx);
 }
 

@@ -6,24 +6,24 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 16:57:07 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/04/17 14:11:38 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/04/22 14:13:01 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-static void count(int fd, t_data *game)
+static void	count(int fd, t_data *game)
 {
-	int l;
-	int s;
-	char *line;
-	
+	int		l;
+	int		s;
+	char	*line;
+
 	l = 0;
 	s = 0;
 	line = get_next_line(fd);
-	while(line[s] != '\0')
+	while (line[s] != '\0')
 		s++;
-	while(line)
+	while (line)
 	{
 		free(line);
 		line = get_next_line(fd);
@@ -33,10 +33,10 @@ static void count(int fd, t_data *game)
 	game->height = l - 1;
 }
 
-static void alocc_map(t_data *game, int fd)
+static void	alocc_map(t_data *game, int fd)
 {
-	int i;
-	char *line;
+	int		i;
+	char	*line;
 
 	i = 0;
 	line = get_next_line(fd);
@@ -49,11 +49,11 @@ static void alocc_map(t_data *game, int fd)
 	}
 }
 
-void map_read(t_data *game, char **argv)
+void	map_read(t_data *game, char **argv)
 {
-	int fd;
-	int i;
- 
+	int	fd;
+	int	i;
+
 	fd = open(argv[1], O_RDONLY);
 	i = 0;
 	count(fd, game);
