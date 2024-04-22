@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 16:00:56 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/04/22 18:12:58 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/04/22 18:28:52 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@
 # define ERR_EXIT "MAP HAVE 0 OR MORE 1 EXIT"
 # define ERR_PLAYER "MAP DONT HAVE PLAYER OR MORE 1 ON MAP"
 # define ERR_MAP "PROBLEM WITH MAP"
-# define ERR_WAY "WRONG WAY TO MAP OR MAP DOESNT EXISTS"
+# define ERR_WAY "WRONG WAY TO MAP OR MAP DOESNT EXISTS\n"
 # define ERR_COIN "0 COIN ON MAP"
 # define ERR
 
@@ -70,5 +70,6 @@ int		close_map(t_data *game);
 int		exit_point(t_data *game);
 int		check_player(t_data *game);
 int		check_coin(t_data *game);
+int		msg(char *err);
 
 #endif

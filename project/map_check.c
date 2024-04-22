@@ -6,15 +6,16 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 18:09:13 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/04/22 18:17:57 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/04/22 18:31:31 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-static void msg(char *err)
+int msg(char *err)
 {
-	perror(err);
+	write(2, err, ft_strlen(err));
+	write(2, "\n", 1);
 	exit(1);
 }
 

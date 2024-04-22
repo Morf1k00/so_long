@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:50:00 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/04/22 18:20:52 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/04/22 18:27:50 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	main(int argc, char **argv)
 	t_data	game;
 
 	if (argc != 2)
-		return (0);
+		msg("WRONG WAY TO MAP OR MAP DOESNT EXISTS");
 	ft_memset(&game, 0, sizeof(t_data));
 	map_read(&game, argv);
 	map_checker(&game);
