@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:50:00 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/04/22 14:31:35 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/04/22 18:20:52 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ int	main(int argc, char **argv)
 		return (0);
 	ft_memset(&game, 0, sizeof(t_data));
 	map_read(&game, argv);
-	//map_checker(&game);
+	map_checker(&game);
 	game.mlx = mlx_init();
 	game.mlx_win = mlx_new_window(game.mlx, game.width * 64,
 			(game.height + 1) * 64, "so_long");
@@ -45,17 +45,3 @@ int	main(int argc, char **argv)
 	mlx_hook(game.mlx_win, 17, 0, key_cross, &game);
 	mlx_loop(game.mlx);
 }
-
-// w is keycode 13
-// s is keycode 1
-// a is keycode 0
-// d is caycode 2
-// enum {
-// 	ON_KEYDOWN = 2,
-// 	ON_KEYUP = 3,
-// 	ON_MOUSEDOWN = 4,
-// 	ON_MOUSEUP = 5,
-// 	ON_MOUSEMOVE = 6,
-// 	ON_EXPOSE = 12,
-// 	ON_DESTROY = 17
-// };
