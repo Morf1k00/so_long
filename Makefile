@@ -6,7 +6,7 @@
 #    By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/16 15:22:19 by rkrechun          #+#    #+#              #
-#    Updated: 2024/04/22 18:19:00 by rkrechun         ###   ########.fr        #
+#    Updated: 2024/04/23 13:32:28 by rkrechun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ HEADER_DIR	= include/
 HEADER		= $(addprefix $(HEADER_DIR), $(HEADER_SRCS))
 
 MPATH_SRCS	= map.c maps_render.c so_long.c keyhooks.c ft_printf.c move.c map_check.c \
-				maps_help_check.c
+				maps_help_check.c move_set.c
 MPATH_DIR	= project/
 MPATH		= $(addprefix $(MPATH_DIR), $(MPATH_SRCS))
 OBJ_M		= $(MPATH:.c=.o)

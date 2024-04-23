@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 16:00:56 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/04/22 18:28:52 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/04/23 14:24:30 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # define ERR_MAP "PROBLEM WITH MAP"
 # define ERR_WAY "WRONG WAY TO MAP OR MAP DOESNT EXISTS\n"
 # define ERR_COIN "0 COIN ON MAP"
-# define ERR
+# define ERR_EXIT2 "CLOSE EXIT"
 
 typedef struct s_data
 {
@@ -71,5 +71,10 @@ int		exit_point(t_data *game);
 int		check_player(t_data *game);
 int		check_coin(t_data *game);
 int		msg(char *err);
+int 	move_a(t_data *game);
+int 	move_d(t_data *game);
+int		move_s(t_data *game);
+int		move_w(t_data *game);
+int	check_event(t_data *game, int i, int j);
 
 #endif
