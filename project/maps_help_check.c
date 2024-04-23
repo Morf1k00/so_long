@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:30:41 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/04/22 18:19:44 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/04/23 16:46:55 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,7 +119,15 @@ int	check_coin(t_data *game)
 		while (game->map[h][w])
 		{
 			if (game->map[h][w] == 'C')
+			{
+					ft_printf("coordinate w : %d\n", w);
+					ft_printf("coordinate h : %d\n", h);
+				if (close_coin(game, h, w) != 1)
+				{
+					return(0);
+				}
 				c++;
+			}
 			w++;
 		}
 		h++;

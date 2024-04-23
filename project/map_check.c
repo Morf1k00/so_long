@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 18:09:13 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/04/23 15:00:06 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/04/23 16:38:03 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,72 @@ int	msg(char *err)
 	exit(1);
 }
 
-int close_exit(t_data *game)
+static int check_exit(t_data *game, int w, int h)
 {
-	
+	w++;
+	if (game->map[h][w] == '0' || game->map[h][w] == 'C')
+		return(1);
+	w--;
+	h++;
+	if (game->map[h][w] == '0' || game->map[h][w] == 'C')
+		return(1);
+	h--;
+	w--;
+	if (game->map[h][w] == '0' || game->map[h][w] == 'C')
+		return(1);
+	w++;
+	h--;
+	if (game->map[h][w] == '0' || game->map[h][w] == 'C')
+		return(1);
+	return (0);
+}
+
+static int close_exit(t_data *game)
+{
+	int w;
+	int h;
+	int we;
+	int he;
+	int res;
+
+	h = 0;
+	while (h <= game->height)
+	{
+		w = 0;
+		while (game->map[h][w])
+		{
+			if (game->map[h][w] == 'E')
+				we = w;
+				he = h;
+			w++;
+		}
+		h++;
+	}
+	he -= 1;
+	ft_printf("we : %d\n", we);
+	ft_printf("he : %d\n", he);
+	res = check_exit(game, we, he);
+	return(res);
+}
+
+int close_coin(t_data *game, int h, int w)
+{
+	w++;
+	if (game->map[h][w] == '0' || game->map[h][w] == 'C')
+		return(1);
+	w--;
+	h++;
+	if (game->map[h][w] == '0' || game->map[h][w] == 'C')
+		return(1);
+	h--;
+	w--;
+	if (game->map[h][w] == '0' || game->map[h][w] == 'C')
+		return(1);
+	w++;
+	h--;
+	if (game->map[h][w] == '0' || game->map[h][w] == 'C')
+		return(1);
+	return (0);
 }
 
 void	map_checker(t_data *game)
@@ -36,7 +99,7 @@ void	map_checker(t_data *game)
 		msg(ERR_PLAYER);
 	if (check_coin(game) < 1)
 		msg(ERR_COIN);
-	if (close_coin(game) )
+	// if (close_coin(game) )
 		 
 	if (close_exit(game) != 1)
 		msg(ERR_EXIT2);
