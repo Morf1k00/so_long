@@ -6,12 +6,12 @@
 #    By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/16 15:22:19 by rkrechun          #+#    #+#              #
-#    Updated: 2024/04/23 13:32:28 by rkrechun         ###   ########.fr        #
+#    Updated: 2024/04/24 15:17:32 by rkrechun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
-CC		= gcc -g -fsanitize=address
+CC		= gcc #-g -fsanitize=address
 FLAGS	= -Wall -Wextra -Werror -Imlx  #-framework OpenGL -framework AppKit
 RM		= rm -rf
 

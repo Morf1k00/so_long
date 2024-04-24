@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:30:41 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/04/24 14:20:35 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/04/24 15:41:54 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,12 +20,15 @@ int	map_len(t_data *game)
 
 	h = 0;
 	w = 0;
-	while (h == game->height)
+	while (h <= game->height - 1)
 	{
 		if (w == 0)
 			w = ft_strlen(game->map[h]);
 		h++;
-		w1 = ft_strlen(game->map[h]);
+		if (h == game->height)
+			w1 = ft_strlen(game->map[h]) + 1;
+		else
+			w1 = ft_strlen(game->map[h]);
 		if (w != w1)
 			return (0);
 	}
