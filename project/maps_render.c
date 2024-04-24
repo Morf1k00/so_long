@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 15:26:55 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/04/22 14:35:30 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/04/24 17:49:40 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ void	place_coin(t_data *game, int w, int h)
 	mlx_put_image_to_window(game->mlx, game->mlx_win,
 		game->item, w * 64, h * 64);
 	game->colecteble++;
+	mlx_string_put(game->mlx, game->mlx_win, (game->width * 64 / 2),((game->height + 1) * 64 + 15),  0xFFFFFF, ft_itoa(game->colecteble));
 }
 
 void	image_in_window(t_data *game)
@@ -44,6 +45,7 @@ void	image_in_window(t_data *game)
 			"textures/coin.xpm", &i, &j);
 	game->enemy = mlx_xpm_file_to_image(game->mlx,
 			"textures/enemy.xpm", &i, &j);
+	game->bl = mlx_xpm_file_to_image(game->mlx, "textures/black.xpm", &i, &j);
 }
 
 static void	help_map(t_data *game, int w, int h)
@@ -66,6 +68,7 @@ void	graphics_map(t_data *game)
 {
 	int	h;
 	int	w;
+	int c;
 
 	h = 0;
 	game->colecteble = 0;
@@ -87,6 +90,11 @@ void	graphics_map(t_data *game)
 		}
 		h++;
 	}
+	c = game->colecteble;
 	if (game->colecteble != 0)
-		ft_printf("\t\033[0;33m\033[1mStill Colect: %d\n", game->colecteble);
+	{
+		mlx_put_image_to_window(game->mlx, game->mlx_win, game->bl, (game->width * 64 / 2) - 15  ,(game->height + 1) * 64 );
+		mlx_string_put(game->mlx, game->mlx_win, (game->width * 64 / 2),((game->height + 1) * 64 + 15),  0xFFFFFF, ft_itoa(c));
+	}
+		
 }

@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 16:00:56 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/04/24 16:27:50 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/04/24 17:44:58 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@
 # define ERR_CLOSE "MAP NOT CLOSE"
 # define ERR_EXIT "MAP HAVE 0 OR MORE 1 EXIT"
 # define ERR_PLAYER "MAP DONT HAVE PLAYER OR MORE 1 ON MAP"
-# define ERR_MAP "PROBLEM WITH MAP"
+# define ERR_MAP "PROBLEM WITH MAP OR MAP EMPTY"
 # define ERR_WAY "WRONG WAY TO MAP OR MAP DOESNT EXISTS\n"
 # define ERR_COIN "0 COIN ON MAP or coin closed by walls"
 # define ERR_EXIT2 "CLOSE EXIT"
@@ -40,6 +40,7 @@ typedef struct s_data
 	void	*player;
 	void	*item;
 	void	*enemy;
+	void	*bl;
 
 	char	**map;
 
@@ -77,5 +78,6 @@ int		move_s(t_data *game);
 int		move_w(t_data *game);
 int		check_event(t_data *game, int i, int j);
 int 	close_coin(t_data *game, int h, int w);
+char	*ft_itoa(int n);
 
 #endif

@@ -6,22 +6,22 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 16:57:07 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/04/24 16:27:45 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/04/24 17:13:08 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-static int check_way(char *argv)
+static int	check_way(char *argv)
 {
-	int l;
-	char *ber;
-	int lb;
+	int		l;
+	char	*ber;
+	int		lb;
 
 	ber = ".ber";
 	lb = 4;
 	l = ft_strlen(argv);
-	while(lb > 0)
+	while (lb > 0)
 	{
 		if (ber[lb] == argv[l])
 		{
@@ -31,7 +31,7 @@ static int check_way(char *argv)
 		else
 			return (0);
 	}
-	return(1);
+	return (1);
 }
 
 static void	count(int fd, t_data *game)
@@ -43,6 +43,8 @@ static void	count(int fd, t_data *game)
 	l = 0;
 	s = 0;
 	line = get_next_line(fd);
+	if (line == NULL)
+		msg(ERR_MAP);
 	while (line[s] != '\0')
 		s++;
 	while (line)
