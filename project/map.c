@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/10 16:57:07 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/04/22 14:13:01 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/04/24 14:17:22 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static void	count(int fd, t_data *game)
 	}
 	game->width = s - 1;
 	game->height = l - 1;
+	ft_printf("heigh %d\n", game->height);
 }
 
 static void	alocc_map(t_data *game, int fd)
@@ -40,7 +41,7 @@ static void	alocc_map(t_data *game, int fd)
 
 	i = 0;
 	line = get_next_line(fd);
-	while (line != NULL)
+	while (line)
 	{
 		game->map[i] = ft_strdup(line);
 		free(line);

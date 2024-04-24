@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:30:41 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/04/23 17:32:22 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/04/24 14:20:35 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	map_len(t_data *game)
 
 	h = 0;
 	w = 0;
-	while (h <= game->height - 1)
+	while (h == game->height)
 	{
 		if (w == 0)
 			w = ft_strlen(game->map[h]);

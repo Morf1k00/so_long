@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:50:00 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/04/23 17:32:27 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/04/24 14:23:45 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ int	main(int argc, char **argv)
 			(game.height + 1) * 64, "so_long");
 	image_in_window(&game);
 	graphics_map(&game);
-	mlx_key_hook(game.mlx_win, key_hook, &game);
+	mlx_hook(game.mlx_win, 2, 1L << 0, key_hook, &game);
 	mlx_hook(game.mlx_win, 17, 0, key_cross, &game);
 	mlx_loop(game.mlx);
 }
