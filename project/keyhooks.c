@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 17:27:49 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/04/23 13:52:31 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/04/24 16:27:32 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,3 +50,4 @@ int	key_hook(int keycode, t_data *game)
 	graphics_map(game);
 	return (1);
 }
+
