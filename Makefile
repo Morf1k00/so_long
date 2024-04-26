@@ -6,7 +6,7 @@
 #    By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/16 15:22:19 by rkrechun          #+#    #+#              #
-#    Updated: 2024/04/26 17:37:27 by rkrechun         ###   ########.fr        #
+#    Updated: 2024/04/26 17:39:13 by rkrechun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,6 @@ $(NAME): $(OBJ_F) $(OBJ_M)
 	@$(CC) $(OBJ_F) $(OBJ_M) -Lmlx -lmlx -framework OpenGL -framework AppKit -o $(NAME)
 
 all: $(NAME)
-
 
 clean:	
 	@$(RM) $(OBJ_M)

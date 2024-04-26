@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:30:41 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/04/24 15:41:54 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/04/26 18:02:01 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	close_map(t_data *game)
 			w++;
 		}
 		while (h++ < game->height)
-			if (game->map[h][0] != '1' && game->map[h][w - 1] != '1')
+			if (game->map[h][0] != '1' || game->map[h][w - 1] != '1')
 				return (0);
 		w = 0;
 		while (h == game->height && game->map[h][w + 1] != '\0')
@@ -100,7 +100,11 @@ int	check_player(t_data *game)
 		while (game->map[h][w])
 		{
 			if (game->map[h][w] == 'P')
+			{
+				if (player_move(game, h, w) != 1)
+					return (0);
 				p++;
+			}
 			w++;
 		}
 		h++;

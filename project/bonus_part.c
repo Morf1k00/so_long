@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 14:59:38 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/04/26 17:16:16 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/04/26 17:39:30 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,25 +55,3 @@ void	game_counter(t_data *game)
 		(15), 0xFF0000, ft_itoa(c));
 	game_steps(game);
 }
-
-// void ani_coin(t_data *game, size_t t)
-// {
-// 	int i;
-// 	int j;
-
-// 	if (t % 3 == 1)
-// 	{
-// 		game->item = mlx_xpm_file_to_image(game->mlx,
-// 				"textures/coin.xpm", &i, &j);
-// 	}
-// 	else if (t % 3 == 2)
-// 	{
-// 		game->item = mlx_xpm_file_to_image(game->mlx,
-// 			"textures/coin2.xpm", &i, &j);
-// 	}
-// 	else if (t % 3 == 3)
-// 	{
-// 		game->item = mlx_xpm_file_to_image(game->mlx,
-// 			"textures/coin3.xpm", &i, &j);
-// 	}
-// }

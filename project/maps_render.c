@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 15:26:55 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/04/26 16:58:32 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/04/26 17:40:30 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	player_position(t_data *game, int w, int h)
 
 void	place_coin(t_data *game, int w, int h)
 {
-		mlx_put_image_to_window(game->mlx, game->mlx_win,
-			game->item, w * 64, h * 64);
-		game->colecteble++;
+	mlx_put_image_to_window(game->mlx, game->mlx_win,
+		game->item, w * 64, h * 64);
+	game->colecteble++;
 }
 
 void	image_in_window(t_data *game)
@@ -46,7 +46,7 @@ void	image_in_window(t_data *game)
 	game->bl = mlx_xpm_file_to_image(game->mlx,
 			"textures/black.xpm", &i, &j);
 	game->item = mlx_xpm_file_to_image(game->mlx,
-				"textures/coin.xpm", &i, &j);
+			"textures/coin.xpm", &i, &j);
 }
 
 static void	help_map(t_data *game, int w, int h)
