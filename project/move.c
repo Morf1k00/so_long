@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/18 15:52:12 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/04/23 14:18:04 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/04/26 13:29:07 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,6 @@ int	keyboard_vertical(t_data *game, int keycode)
 		i = move_s(game);
 	else if (keycode == 1)
 		i = move_w(game);
-	ft_printf("\t\033[0;34m\033[1mSteps taken: %i\n", game->steps);
 	return (i);
 }
 
@@ -82,6 +81,5 @@ int	keyboard_horisontal(t_data *game, int keycode)
 		i = move_a(game);
 	else if (keycode == 2)
 		i = move_d(game);
-	ft_printf("\t\033[0;34m\033[1mSteps taken: %i\n", game->steps);
 	return (i);
 }

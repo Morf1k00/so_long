@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 16:00:56 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/04/24 17:44:58 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/04/26 15:20:18 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 # include <fcntl.h>
 # include <stdarg.h>
 # include "../gnl/get_next_line.h"
+# include <time.h>
 
 # define ERR_MAP_REC "MAP NOT RECTANGULAR"
 # define ERR_CLOSE "MAP NOT CLOSE"
@@ -72,12 +73,14 @@ int		exit_point(t_data *game);
 int		check_player(t_data *game);
 int		check_coin(t_data *game);
 int		msg(char *err);
-int 	move_a(t_data *game);
-int 	move_d(t_data *game);
+int		move_a(t_data *game);
+int		move_d(t_data *game);
 int		move_s(t_data *game);
 int		move_w(t_data *game);
 int		check_event(t_data *game, int i, int j);
-int 	close_coin(t_data *game, int h, int w);
+int		close_coin(t_data *game, int h, int w);
 char	*ft_itoa(int n);
+void	game_counter(t_data *game);
+void	ani_coin(t_data *game, size_t t);
 
 #endif

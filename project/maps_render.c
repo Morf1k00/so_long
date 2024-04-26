@@ -6,11 +6,12 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 15:26:55 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/04/24 17:49:40 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/04/26 16:58:32 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+#include <time.h>
 
 void	player_position(t_data *game, int w, int h)
 {
@@ -22,10 +23,9 @@ void	player_position(t_data *game, int w, int h)
 
 void	place_coin(t_data *game, int w, int h)
 {
-	mlx_put_image_to_window(game->mlx, game->mlx_win,
-		game->item, w * 64, h * 64);
-	game->colecteble++;
-	mlx_string_put(game->mlx, game->mlx_win, (game->width * 64 / 2),((game->height + 1) * 64 + 15),  0xFFFFFF, ft_itoa(game->colecteble));
+		mlx_put_image_to_window(game->mlx, game->mlx_win,
+			game->item, w * 64, h * 64);
+		game->colecteble++;
 }
 
 void	image_in_window(t_data *game)
@@ -41,11 +41,12 @@ void	image_in_window(t_data *game)
 			"textures/exit.xpm", &i, &j);
 	game->player = mlx_xpm_file_to_image(game->mlx,
 			"textures/player.xpm", &i, &j);
-	game->item = mlx_xpm_file_to_image(game->mlx,
-			"textures/coin.xpm", &i, &j);
 	game->enemy = mlx_xpm_file_to_image(game->mlx,
 			"textures/enemy.xpm", &i, &j);
-	game->bl = mlx_xpm_file_to_image(game->mlx, "textures/black.xpm", &i, &j);
+	game->bl = mlx_xpm_file_to_image(game->mlx,
+			"textures/black.xpm", &i, &j);
+	game->item = mlx_xpm_file_to_image(game->mlx,
+				"textures/coin.xpm", &i, &j);
 }
 
 static void	help_map(t_data *game, int w, int h)
@@ -68,7 +69,6 @@ void	graphics_map(t_data *game)
 {
 	int	h;
 	int	w;
-	int c;
 
 	h = 0;
 	game->colecteble = 0;
@@ -90,11 +90,5 @@ void	graphics_map(t_data *game)
 		}
 		h++;
 	}
-	c = game->colecteble;
-	if (game->colecteble != 0)
-	{
-		mlx_put_image_to_window(game->mlx, game->mlx_win, game->bl, (game->width * 64 / 2) - 15  ,(game->height + 1) * 64 );
-		mlx_string_put(game->mlx, game->mlx_win, (game->width * 64 / 2),((game->height + 1) * 64 + 15),  0xFFFFFF, ft_itoa(c));
-	}
-		
+	game_counter(game);
 }

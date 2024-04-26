@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:50:00 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/04/24 17:35:54 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/04/26 16:58:14 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,18 @@ static void	*ft_memset(void *b, int c, size_t len)
 	return (b);
 }
 
+// int	render_ani(t_data *game)
+// {
+// 	static size_t i;
+
+// 	i = 0;
+// 	ani_coin(game, i);
+// 	i++;
+// 	graphics_map(game);
+// 	usleep(1000000);
+// 	return(0);
+// }
+
 int	main(int argc, char **argv)
 {
 	t_data	game;
@@ -82,10 +94,10 @@ int	main(int argc, char **argv)
 	map_checker(&game);
 	game.mlx = mlx_init();
 	game.mlx_win = mlx_new_window(game.mlx, game.width * 64,
-			(game.height + 1) * 64 + 30, "so_long");
+			(game.height + 1) * 64, "so_long"); // + 30 bonus part
 	image_in_window(&game);
 	graphics_map(&game);
-	//mlx_string_put(game.mlx, game.mlx_win, (game.width * 64 / 2),((game.height + 1) * 64 + 15),  0xFFFFFF, ft_itoa(game.colecteble));
+	//mlx_loop_hook(game.mlx, render_ani, &game.mlx_win);
 	mlx_hook(game.mlx_win, 2, 1L << 0, key_hook, &game);
 	mlx_hook(game.mlx_win, 17, 0, key_cross, &game);
 	mlx_loop(game.mlx);

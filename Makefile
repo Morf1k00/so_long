@@ -6,12 +6,12 @@
 #    By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/04/16 15:22:19 by rkrechun          #+#    #+#              #
-#    Updated: 2024/04/24 16:43:51 by rkrechun         ###   ########.fr        #
+#    Updated: 2024/04/26 17:37:27 by rkrechun         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = so_long
-CC		= gcc #-g -fsanitize=address
+CC		= gcc -g -fsanitize=address
 FLAGS	= -Wall -Wextra -Werror -Imlx  #-framework OpenGL -framework AppKit
 RM		= rm -rf
 
@@ -20,19 +20,16 @@ HEADER_DIR	= include/
 HEADER		= $(addprefix $(HEADER_DIR), $(HEADER_SRCS))
 
 MPATH_SRCS	= map.c maps_render.c so_long.c keyhooks.c ft_printf.c move.c map_check.c \
-				maps_help_check.c move_set.c
+				maps_help_check.c move_set.c bonus_part.c 
 MPATH_DIR	= project/
 MPATH		= $(addprefix $(MPATH_DIR), $(MPATH_SRCS))
 OBJ_M		= $(MPATH:.c=.o)
+
 
 FUNC_SRCS	= get_next_line.c get_next_line_utils.c 
 FUNC_DIR	= gnl/
 FUNC		= $(addprefix $(FUNC_DIR), $(FUNC_SRCS))
 OBJ_F		= $(FUNC:.c=.o)
-
-
-#LIBRARY = -Lmlx -lmlx -framework OpenGL -framework AppKit
-#MINILIBX = mlx/
 
 %.o: %.c $(HEADER) Makefile
 	@$(CC) $(FLAGS) -c $< -o $@
@@ -42,19 +39,20 @@ $(NAME): $(OBJ_F) $(OBJ_M)
 
 all: $(NAME)
 
+
 clean:	
-		@$(RM) $(OBJ_M)
-		@$(RM) $(OBJ_F)
-		@echo "$(YELLOW)Objectfile deleted!$(DEFAULT)"
+	@$(RM) $(OBJ_M)
+	@$(RM) $(OBJ_F)
+	@$(RM) $(B_M)
+	@echo "$(YELLOW)Objectfile deleted!$(DEFAULT)"
 
 fclean: 
-		@$(RM) $(OBJ_M)
-		@$(RM) $(OBJ_F)
-		@$(RM) $(NAME)
-		@echo "$(RED)All deleted!$(DEFAULT)"
+	@$(RM) $(OBJ_M)
+	@$(RM) $(OBJ_F)
+	@$(RM) $(NAME)
+	@$(RM) $(B_M)
+	@echo "$(RED)All deleted!$(DEFAULT)"
 
 re:	fclean all
 
-.PHONY: all clean fclean re
-
-# -lmlx -framework OpenGL -framework AppKit
+.PHONY: all clean fclean bonus re
