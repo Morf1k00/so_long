@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/04 16:00:56 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/04/26 17:53:51 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/04/29 10:37:15 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ int		check_event(t_data *game, int i, int j);
 int		close_coin(t_data *game, int h, int w);
 char	*ft_itoa(int n);
 void	game_counter(t_data *game);
-void	ani_coin(t_data *game, size_t t);
+//void	ani_coin(t_data *game, size_t t);
 int		player_move(t_data *game,int h, int w);
 
 #endif

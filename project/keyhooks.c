@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/09 17:27:49 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/04/26 18:01:38 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/04/29 10:24:05 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,22 +16,19 @@ int	player_move(t_data *game, int h, int w)
 {
 	w++;
 	if (game->map[h][w] == '0' || game->map[h][w] == 'C')
-	{
-		w--;
-		h++;
-		if (game->map[h][w] == '0' || game->map[h][w] == 'C')
-		{
-			h--;
-			w--;
-			if (game->map[h][w] == '0' || game->map[h][w] == 'C')
-			{
-				w++;
-				h--;
-				if (game->map[h][w] == '0' || game->map[h][w] == 'C')
-					return (1);
-			}
-		}
-	}
+		return (1);
+	w--;
+	h++;
+	if (game->map[h][w] == '0' || game->map[h][w] == 'C')
+		return (1);
+	h--;
+	w--;
+	if (game->map[h][w] == '0' || game->map[h][w] == 'C')
+		return (1);
+	w++;
+	h--;
+	if (game->map[h][w] == '0' || game->map[h][w] == 'C')
+		return (1);
 	return (0);
 }
 

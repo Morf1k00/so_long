@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 15:50:00 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/04/26 17:39:41 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/04/29 10:21:46 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,3 +89,4 @@ int	main(int argc, char **argv)
 	mlx_hook(game.mlx_win, 17, 0, key_cross, &game);
 	mlx_loop(game.mlx);
 }
+ 

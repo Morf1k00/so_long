@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 14:59:38 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/04/26 17:39:30 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/04/29 10:40:16 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 static void	game_steps(t_data *game)
 {
-	int	c;
-
-	c = game->colecteble;
-	if (c > 0)
+	char * c;
+	
+	c = ft_itoa(game->colecteble);
+	if (game->colecteble > 0)
 	{
 		mlx_put_image_to_window(game->mlx, game->mlx_win,
 			game->bl, 120, 0);
@@ -32,15 +32,16 @@ static void	game_steps(t_data *game)
 		mlx_string_put(game->mlx, game->mlx_win, 145,
 			(15), 0xFF0000, ("coin left :"));
 		mlx_string_put(game->mlx, game->mlx_win, 245,
-			(15), 0xFF0000, ft_itoa(c));
+			(15), 0xFF0000, c);
 	}
+	free(c);
 }
 
 void	game_counter(t_data *game)
 {
-	int	c;
+	char *c;
 
-	c = game->steps;
+	c = ft_itoa(game->steps);
 	mlx_put_image_to_window(game->mlx, game->mlx_win,
 		game->bl, 0, 0);
 	mlx_put_image_to_window(game->mlx, game->mlx_win,
@@ -52,6 +53,7 @@ void	game_counter(t_data *game)
 	mlx_string_put(game->mlx, game->mlx_win, 0,
 		(15), 0xFF0000, ("Steps taken:"));
 	mlx_string_put(game->mlx, game->mlx_win, 100,
-		(15), 0xFF0000, ft_itoa(c));
+		(15), 0xFF0000, c);
+	free(c);
 	game_steps(game);
 }
