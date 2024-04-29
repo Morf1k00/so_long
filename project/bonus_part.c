@@ -6,7 +6,7 @@
 /*   By: rkrechun <rkrechun@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/26 14:59:38 by rkrechun          #+#    #+#             */
-/*   Updated: 2024/04/29 10:40:16 by rkrechun         ###   ########.fr       */
+/*   Updated: 2024/04/29 10:42:35 by rkrechun         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 static void	game_steps(t_data *game)
 {
-	char * c;
-	
+	char	*c;
+
 	c = ft_itoa(game->colecteble);
 	if (game->colecteble > 0)
 	{
@@ -39,7 +39,7 @@ static void	game_steps(t_data *game)
 
 void	game_counter(t_data *game)
 {
-	char *c;
+	char	*c;
 
 	c = ft_itoa(game->steps);
 	mlx_put_image_to_window(game->mlx, game->mlx_win,
