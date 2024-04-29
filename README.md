@@ -20,3 +20,4 @@ With this guide i start too understend how i should open window, how i can paint
 
 https://harm-smits.github.io/42docs/libs/minilibx
 
+<img width="640" alt="Screen Shot 2024-04-29 at 10 58 47 AM" src="https://github.com/Morf1k00/so_long/assets/150341297/0310216c-6d5d-40e9-ae9a-25b5840fb873">
